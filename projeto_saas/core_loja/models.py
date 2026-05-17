@@ -9,11 +9,9 @@ class Empresa(models.Model):
 
 # 2. Produto
 class Produto(models.Model):
-    empresa = models.ForeignKey(Empresa,
-    on_delete=models.CASCADE)
+    empresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
     nome = models.CharField(max_length=100)
-    preco = models.DecimalField(max_digits=10,
-    decimal_places=2)
+    preco = models.DecimalField(max_digits=10, decimal_places=2)
     def __str__(self):
         return f"{self.nome} - ({self.empresa.nome})"
 
@@ -29,8 +27,7 @@ class Cliente(models.Model): # Use sempre no singular por boa prática
     data_nascimento = models.DateField() # Abre um calendário no Admin
     # 3. Endereço
     endereco = models.CharField(max_length=255)
-    cidade = models.CharField(max_length=100,
-    default="Nova Porteirinha")
+    cidade = models.CharField(max_length=100, default="Nova Porteirinha")
     cep = models.CharField(max_length=9)
     # 4. Controle Interno
     data_cadastro = models.DateTimeField(auto_now_add=True) # Grava a data/hora sozinho ao criar
